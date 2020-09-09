@@ -18,7 +18,7 @@ before_install:
  
 
 
-install:
+install:  
   - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
   # - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
   # - kubectl apply -f udacity-c3-deployment/k8s/aws-secret.yaml
