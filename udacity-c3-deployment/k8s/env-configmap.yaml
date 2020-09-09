@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: udagram-talaat-dev
+  AWS_PROFILE: Deployed
+  AWS_REGION: eu-central-1
+  JWT_SECRET: mohamedtalaat
+  POSTGRESS_DB: udagram
+  POSTGRESS_HOST: database-1.cjqzv1eedxia.eu-central-1.rds.amazonaws.com
+  URL: http://localhost:8100  
+metadata:
+  name: env-config
+  

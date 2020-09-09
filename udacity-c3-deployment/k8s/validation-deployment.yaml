@@ -1,0 +1,32 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    service: validation
+  name: validation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: validation
+  template:
+    metadata:
+      labels:
+        service: validation
+        api: external        
+    spec:
+      containers:
+      - image: mohamedtalaat/udacity-validation
+        name: validation
+        imagePullPolicy: Always          
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"                
+      restartPolicy: Always
+

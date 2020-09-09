@@ -1,0 +1,22 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: mohamedtalaat/reverseproxy 
+  backend_user:
+    build:
+      context: ../../udacity-c3-restapi-user
+    image: mohamedtalaat/udacity-restapi-user
+  backend_feed:
+    build:
+      context: ../../udacity-c3-restapi-feed  
+    image: mohamedtalaat/udacity-restapi-feed
+  frontend:
+    build:
+      context: ../../udacity-c3-frontend  
+    image: mohamedtalaat/udacity-frontend:local
+  validation:
+    build:
+      context: ../../udacity-c3-restapi-validation  
+    image: mohamedtalaat/udacity-validation
