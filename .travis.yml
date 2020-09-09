@@ -24,3 +24,4 @@ install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
   # - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
  
+ 
