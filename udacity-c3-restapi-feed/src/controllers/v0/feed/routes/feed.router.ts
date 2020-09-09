@@ -75,7 +75,7 @@ async function  ValidateFileName(url:string): Promise<any>{
 }
 
 // Get a signed url to put a new item in the bucket
-router.get('/signed-url/:fileName',     async (req: Request, res: Response) => {
+router.get('/signed-url/:fileName', requireAuth ,    async (req: Request, res: Response) => {
     let { fileName } = req.params;
     console.log("fileName is:",fileName);
    let result = await ValidateFileName(`http://localhost:8181/api/v0/${fileName}`)

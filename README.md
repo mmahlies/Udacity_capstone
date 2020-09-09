@@ -8,7 +8,9 @@ The project consists on
 2. *udacity-restapi-feed* - For "feed" microservice
 3. *udacity-restapi-user* - For "user" microservice
 4. *udacity-reverseproxy* - For running the Nginx as a reverse-proxy server
-5. *udacity-validation* - For validate image file name to prevent some reversed word from using as file names
+5. *udacity-validation* - For validate image file name to prevent some reversed word from using as file names validate the Feed/signed-url EndPoint
+so that we apply chained microservice desgin pattern 
+
 
 Build the application
 1. Run udacity-c3-deployment\docker\ build.cmd *shell scrpit to build all images*
@@ -19,4 +21,9 @@ Build the application
 6. Run udacity-c3-deployment\k8s\forward validation.cmd *Shell script to forward port for validation services*
 
 
+**Note that
+
+By default Kubernetes offer RollingUpdate strategy feature is set to RollingUpdate that allow us to update the container with Zero downtime and build System which enhanced in resiliency 
+Two versions  but some  deployment run in one replicas set due to local cpu limit 
+- 'A' and 'B' of the same application can run simultaneously and serve the traffic by scaling up/scaling down 
 
