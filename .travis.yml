@@ -19,7 +19,7 @@ before_install:
 
 
 install:    
-  # - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_NAME" --password-stdin
+   - echo "DOCKER_HUB_PASSWORD" | docker login -u "DOCKER_HUB_NAME" --password-stdin
   - echo "$DOCKER_HUB_NAME"
   - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
   # - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
