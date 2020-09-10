@@ -25,5 +25,5 @@ Build the application
 
 By default Kubernetes offer RollingUpdate strategy feature is set to RollingUpdate that allow us to update the container with Zero downtime and build System which enhanced in resiliency 
 Two versions  but some  deployment run in one replicas set due to local cpu limit 
-- 'A' and 'B' of the same application can run simultaneously and serve the traffic by scaling up/scaling down .
+- 'A' and 'B' of the same application can run simultaneously and serve the traffic by scaling up/scaling down ..
 
