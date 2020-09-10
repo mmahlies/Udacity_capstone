@@ -5,6 +5,7 @@ services: docker
 sudo: required
 
 env:
+  - DOCKER_COMPOSE_VERSION=1.23.2
   global:
     - CHANGE_MINIKUBE_NONE_USER=true
     - MINIKUBE_WANTUPDATENOTIFICATION=false
@@ -12,7 +13,7 @@ env:
     - MINIKUBE_HOME=$HOME
     - CHANGE_MINIKUBE_NONE_USER=true
     - KUBECONFIG=$HOME/.kube/config
-
+    - DOCKER_COMPOSE_VERSION=1.23.2
 
 before_script:
   - sudo apt-get -qq -y install conntrack
