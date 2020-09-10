@@ -17,11 +17,11 @@ env:
 before_script:
   - sudo apt-get -qq -y install conntrack
   - docker -v && docker-compose -v
-  - sudo rm /usr/local/bin/docker-compose
+ # - sudo rm /usr/local/bin/docker-compose
   # - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin/
+  #- sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  #- chmod +x docker-compose
+  #- sudo mv docker-compose /usr/local/bin/
  
   # Download kubectl, which is a requirement for using minikube.
   - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.18.1/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
