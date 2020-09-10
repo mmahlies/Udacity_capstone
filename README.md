@@ -47,6 +47,13 @@ Build the application
 6. Run udacity-c3-deployment\k8s\forward validation.cmd *Shell script to forward port for validation services*
 
 
+
+** Future work
+1. Add swagger descrition to the endpoint to be more informative
+2. add image compress logic to uploaded image 
+3. add OAuth social authentication feature to allow user register by their social accounts
+
+
 **Note that
 
 By default Kubernetes offer RollingUpdate strategy feature is set to RollingUpdate that allow us to update the container with Zero downtime and build System which enhanced in resiliency 
