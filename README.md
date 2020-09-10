@@ -11,6 +11,7 @@ The project consists on
 5. *udacity-validation* - For validate image file name to prevent some reversed word from using as file names validate the Feed/signed-url EndPoint
 so that we apply chained microservice desgin pattern 
 
+![](ScreenShot/architecture.png)
 
 Build the application
 1. Run udacity-c3-deployment\docker\ build.cmd *shell scrpit to build all images*
