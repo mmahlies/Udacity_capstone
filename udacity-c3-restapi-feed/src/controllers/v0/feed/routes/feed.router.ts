@@ -78,7 +78,7 @@ async function  ValidateFileName(url:string): Promise<any>{
 router.get('/signed-url/:fileName', requireAuth ,    async (req: Request, res: Response) => {
     let { fileName } = req.params;
     console.log("fileName is:",fileName);
-   let result = await ValidateFileName(`http://localhost:8181/api/v0/${fileName}`)
+   let result = await ValidateFileName(`http://localhost:8080/api/v0/validation/${fileName}`)
    console.log("result :", result.data);
    console.log("123123");
    if  (result.data == true)

@@ -9,10 +9,8 @@ import { config } from './config/config';
 const c = config.dev;
 
 (async () => {
-
-
   const app = express();
-  const port =  8181; // default port to listen
+  const port = process.env.PORT || 8080; // default port to listen
   
   app.use(bodyParser.json());
 

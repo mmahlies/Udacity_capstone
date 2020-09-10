@@ -19,13 +19,14 @@ kubectl apply -f  frontend-deployment.yaml
  
 kubectl apply -f  frontend-service.yaml
  
-kubectl apply -f  reverseproxy-deployment.yaml
- 
-kubectl apply -f  reverseproxy-service.yaml
-
 kubectl apply -f  validation-deployment.yaml
  
 kubectl apply -f  validation-service.yaml
+
+ kubectl apply -f  reverseproxy-deployment.yaml
+ 
+kubectl apply -f  reverseproxy-service.yaml
+
 
 
 
