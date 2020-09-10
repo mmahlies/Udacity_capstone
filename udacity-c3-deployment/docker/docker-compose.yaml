@@ -8,6 +8,7 @@ services:
       depends_on:
         - backend-user
         - backend-feed     
+        - validation
   backend-user:
     image: mohamedtalaat/udacity-restapi-user
     volumes:
@@ -41,7 +42,4 @@ services:
     ports:
       - "8100:80"
   validation:
-    image: mohamedtalaat/udacity-restapi-validation
-    ports:
-      - "8181:8181"
-  
+    image: mohamedtalaat/udacity-validation
