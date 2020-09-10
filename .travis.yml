@@ -2,8 +2,11 @@ language: minimal
 
 services: docker
 
+sudo: required
+
 env:
   - DOCKER_COMPOSE_VERSION=1.23.2
+  - CHANGE_MINIKUBE_NONE_USER=true
 
 before_install:
   - docker -v && docker-compose -v
@@ -14,14 +17,18 @@ before_install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
-
+  - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.7.0/bin/linux/amd64/kubectl && \chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+  - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && \ chmod +x minikube && sudo mv minikube /usr/local/bin/
+  - sudo minikube start --vm-driver=none --kubernetes-version=v1.7.0
+  - minikube update-context
+  - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \ until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
  
 
 
 install:  
   - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
   # - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
-  # - kubectl apply -f udacity-c3-deployment/k8s/aws-secret.yaml
+  - kubectl apply -f udacity-c3-deployment/k8s/aws-secret.yaml
   # - kubectl apply -f  udacity-c3-deployment/k8s/env-configmap.yaml
   # - kubectl delete udacity-c3-deployment/k8s/secret/env-secret
   # - kubectl create secret generic env-secret --from-literal=POSTGRESS_USERNAME="postgres" --from-literal=POSTGRESS_PASSWORD="database-1" 
