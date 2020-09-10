@@ -35,24 +35,24 @@ before_script:
 
 
 install:  
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
+  # - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
   # - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
   - kubectl apply -f udacity-c3-deployment/k8s/aws-secret.yaml
-  # - kubectl apply -f  udacity-c3-deployment/k8s/env-configmap.yaml
-  # - kubectl delete udacity-c3-deployment/k8s/secret/env-secret
-  # - kubectl create secret generic env-secret --from-literal=POSTGRESS_USERNAME="postgres" --from-literal=POSTGRESS_PASSWORD="database-1" 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-deployment.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-service.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/backend-user-deployment.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/backend-user-service.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-service.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/frontend-deployment.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/frontend-service.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/reverseproxy-deployment.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/reverseproxy-service.yaml
-  # - kubectl apply -f  udacity-c3-deployment/k8s/validation-deployment.yaml 
-  # - kubectl apply -f  udacity-c3-deployment/k8s/validation-service.yaml
-  # - kubectl port-forward service/frontend 8100:8100 
-  # - kubectl port-forward service/reverseproxy 8080:8080
-  # - kubectl port-forward service/reverseproxy 8080:8080
+  - kubectl apply -f  udacity-c3-deployment/k8s/env-configmap.yaml
+  - kubectl delete udacity-c3-deployment/k8s/secret/env-secret
+  - kubectl create secret generic env-secret --from-literal=POSTGRESS_USERNAME="postgres" --from-literal=POSTGRESS_PASSWORD="database-1" 
+  - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-deployment.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-service.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/backend-user-deployment.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/backend-user-service.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/backend-feed-service.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/frontend-deployment.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/frontend-service.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/reverseproxy-deployment.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/reverseproxy-service.yaml
+  - kubectl apply -f  udacity-c3-deployment/k8s/validation-deployment.yaml 
+  - kubectl apply -f  udacity-c3-deployment/k8s/validation-service.yaml
+  - kubectl port-forward service/frontend 8100:8100 
+  - kubectl port-forward service/reverseproxy 8080:8080
+  - kubectl port-forward service/reverseproxy 8080:8080
 
