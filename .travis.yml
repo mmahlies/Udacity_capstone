@@ -14,14 +14,9 @@ env:
     - KUBECONFIG=$HOME/.kube/config
 
 
-before_install:
+before_script:
   - sudo apt-get -qq -y install conntrack
   - docker -v && docker-compose -v
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-before_script:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
@@ -44,8 +39,8 @@ script:
   - kubectl cluster-info
   # Wait for kube-dns to be ready.
   - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build 
-  - docker login -u $DOCKER_HUB_NAME -p $DOCKER_HUB_PASSWORD
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose.yaml build   
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_NAME" --password-stdin
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
   - kubectl apply -f udacity-c3-deployment/k8s/aws-secret.yaml
   - kubectl apply -f  udacity-c3-deployment/k8s/env-configmap.yaml
